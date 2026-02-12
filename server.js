@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
     });
 
     req.on("end", () => {
-      const name = body.split("=")[1]; // name=value
+      const name = body.split("=")[1]; // name=value [0]=name [1]=value
 
       fs.appendFile("data.txt", decodeURIComponent(name) + "\n", () => {
         res.writeHead(200, { "Content-Type": "text/html" });

@@ -1,0 +1,265 @@
+// Show Databases - Show Databases
+// Create / Switch Database - Create / Switch Database
+// Check current database - db
+// Create Collection - db.createCollection("students")
+// Show collections - Show collections
+
+// Insert One Document :
+// db.students.insertOne({
+//     name: "Ravi",
+//     age: 22,
+//     course: "MERN"
+// })
+
+// Insert Multiple Documents:
+// db.students.insertMany([
+//     {
+//         name: "Kumar",
+//         age: 23,
+//         course: "Python"
+//     },
+//     {
+//         name: "Ajith",
+//         age: 21,
+//         course: "Java"
+//     }
+// ])
+
+// Find All Documents - db.students.find()
+// Find One Document - db.students.findOne()
+
+// Find By Condition :
+
+// db.students.find({
+//     name: "Ravi"
+// })
+
+// db.students.find({
+//     age: 22
+// })
+
+
+// ************************COMPARISON OPERATORS************************
+
+
+// Greater Than :
+// db.students.find({
+//     age: { $gt: 22 }
+// })
+
+// Less Than:
+// db.students.find({
+//     age: { $lt: 22 }
+// })
+
+
+// Greater Than or Equal:
+// db.students.find({
+//     age: { $gte: 22 }
+// })
+
+
+// Less Than or Equal:
+// db.students.find({
+//     age: { $lte: 22 }
+// })
+
+
+// Not Equal:
+// db.students.find({
+//     age: { $ne: 22 }
+// })
+
+
+// ********************* LOGICAL OPERATORS *********************
+// AND
+// db.students.find({
+//     $and: [
+//         { age: 22 },
+//         { course: "MERN" }
+//     ]
+// })
+
+// OR 
+// db.students.find({
+//     $or: [
+//         { age: 22 },
+//         { course: "Java" }
+//     ]
+// })
+
+
+
+// ****************** PROJECTION ******************
+// Show only name and age:
+// db.students.find(
+//     {},
+//     {
+//         name: 1,
+//         age: 1,
+//         _id: 0
+//     }
+// )
+
+// ****************** SORT ******************
+
+
+// Ascending
+// db.students.find().sort({
+//     age: 1
+// })
+
+// Descending
+// db.students.find().sort({
+//     age: -1
+// })
+
+
+// LIMIT
+// db.students.find().limit(2)
+
+
+// SKIP
+// db.students.find().skip(2)
+
+
+
+// ************ UPDATE ************
+// Update One
+// db.students.updateOne(
+//     { name: "Ravi" },
+//     {
+//         $set: {
+//             age: 25
+//         }
+//     }
+// )
+
+// Update Many:
+// db.students.updateMany(
+//     { course: "MERN" },
+//     {
+//         $set: {
+//             status: "Active"
+//         }
+//     }
+// )
+
+
+// INCREMENT
+
+// db.students.updateOne(
+//     { name: "Ravi" },
+//     {
+//         $inc: {
+//             age: 1
+//         }
+//     }
+// )
+
+// RENAME FIELD
+// db.students.updateMany(
+//     {},
+//     {
+//         $rename: {
+//             course: "technology"
+//         }
+//     }
+// )
+
+
+// *********** DELETE ***********
+// Delete One
+// db.students.deleteOne({
+//     name: "Ravi"
+// })
+
+// Delete many
+// db.students.deleteMany({
+//     course: "Java"
+// })
+
+
+// Delete All Documents - db.students.deleteMany({})
+
+
+// COUNT - db.students.countDocuments()
+
+// DISTINCT - db.students.distinct("course")
+
+// DROP COLLECTION - db.students.drop()
+
+
+// DROP DATABASE - db.dropDatabase()
+
+
+// ***************** TEXT SEARCH *****************
+
+// Create Index:
+// db.students.createIndex({
+//     name: "text"
+// })
+
+
+// Search:
+// db.students.find({
+//     $text: {
+//         $search: "Ravi"
+//     }
+// })
+
+
+
+// ************* AGGREGATION ************
+
+//  Match
+//  db.students.aggregate([
+//     {
+//         $match: {
+//             course: "MERN"
+//         }
+//     }
+// ])
+
+
+// Group:
+// db.students.aggregate([
+//     {
+//         $group: {
+//             _id: "$course",
+//             totalStudents: {
+//                 $sum: 1
+//             }
+//         }
+//     }
+// ])
+
+
+
+// Average Age
+
+// db.students.aggregate([
+//     {
+//         $group: {
+//             _id: null,
+//             averageAge: {
+//                 $avg: "$age"
+//             }
+//         }
+//     }
+// ])
+
+
+
+// ******************* INDEXING *******************
+// Create Index:
+// db.students.createIndex({
+//     name: 1
+// })
+
+// view Index - db.students.getIndexes()
+
+// Delete Index - db.students.dropIndex("name_1")
+
+
+
